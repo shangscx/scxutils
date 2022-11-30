@@ -25,7 +25,6 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
         use:[
           {
               loader:'babel-loader',
@@ -39,9 +38,6 @@ module.exports = {
               }
           }
       ]
-        // options: {
-        //   fix: true, //自动修复eslint的错误
-        // },
       },
     ],
   },
