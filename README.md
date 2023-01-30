@@ -27,5 +27,13 @@ getAddressParam('b')--->2<br/>
 let url = https://Desktop/demo/mzdfunctions/index.html?a=1&b=2<br/>
 getUrlQuery(url)--->{a:1,b:2}<br/>
 </div>
+-----------------
+<h3>深拷贝</h3>
+<div> import {deepClone} from 'scxutils' </div>
+<span style="color:#f00">用法</span>
+let obj = {name:1,address:{value:2}}
+let newObj = deepClone(c1);
+obj.address.value = 99;
+console.log(obj,newObj)
 
 
