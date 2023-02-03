@@ -1,13 +1,13 @@
 # scxutils
 -----------------
 <h3>判断数据类型</h3>
-<div> import {judge} from 'scxutils' </div>
+<div> import {judgeType} from 'scxutils' </div>
 <div>
-judge('str')->string<br/>
-judge({})->object<br/>
-judge([])->array<br/>
-judge(1)->number<br/>
-judge(false)->boolean<br/>
+judgeType('str')->string<br/>
+judgeType({})->object<br/>
+judgeType([])->array<br/>
+judgeType(1)->number<br/>
+judgeType(false)->boolean<br/>
 </div>
 
 -----------------
@@ -35,5 +35,10 @@ let obj = {name:1,address:{value:2}}
 let newObj = deepClone(c1);
 obj.address.value = 99;
 console.log(obj,newObj)
+-----------------
+import {dataFormat} from 'scxutils';
+//调用时间的格式化
+const dt = new Date();
+const newDt = dataFormat(dt);
 
 
