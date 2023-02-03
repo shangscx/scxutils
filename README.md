@@ -1,5 +1,6 @@
 # scxutils
 -----------------
+<!-- 发包 要先npm run build 再npm publish -->
 <h3>判断数据类型</h3>
 <div> import {judgeType} from 'scxutils' </div>
 <div>
