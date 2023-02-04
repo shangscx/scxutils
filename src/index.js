@@ -32,24 +32,32 @@ export function getUrlQuery(url) {
   }
   return obj;
 }
-const isObj = (val) => typeof val === "object" && val !== null;
 
 // 写法1
 export function deepClone(obj) {
-    // 通过 instanceof 去判断你要拷贝的变量它是否是数组（如果不是数组则对象）。
+  // 如果是 值类型 或 null，则直接return
+  if(typeof obj !== 'object' || obj === null) {
+      return obj
+  }
+  // 定义结果对象
+  let copy = {}
+  
+  // 如果对象是数组，则定义结果数组
+  if(obj.constructor === Array) {
+      copy = []
+  }
+  // 遍历对象的key
+  for(let key in obj) {
+      // 如果key是对象的自有属性
+      if(obj.hasOwnProperty(key)) {
+          // 递归调用深拷贝方法
+          copy[key] = deepClone(obj[key])
+      }
+  }
+  
+  return copy;
+} 
 
-    // 1. 准备你想返回的变量（新地址）。
-    const newObj = obj instanceof Array ? [] : {}; // 核心代码。
-
-    // 2. 做拷贝；简单数据类型只需要赋值，如果遇到复杂数据类型就再次进入进行深拷贝，直到所找到的数据为简单数据类型为止。
-    for (const key in obj) {
-        const item = obj[key];
-        newObj[key] = isObj(item) ? deepClone(item) : item;
-    }
-
-    // 3. 返回拷贝的变量。
-    return newObj;
-}
 
 
 export function dateFormat(dtStr){
@@ -68,3 +76,6 @@ export function dateFormat(dtStr){
 function padZero(n){
  return  n>9 ? n : `0${n}`
 }
+
+
+//转义html字符
